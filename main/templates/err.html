@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}shlink - Error{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <div class="jumbotron fluid-jumbotron bg-light">
+                <h1 class="display-1 text-center mx-auto">An Error Has Happened.</h1>
+                <p class="lead text-center mx-auto">Go back to <a class="text-muted" href="{% url "main:home" %}">home</a>?</p>
+            </div>
+        {% endblock %}
+    </body>
+</html>

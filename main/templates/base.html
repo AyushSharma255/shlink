@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--- Quicksand (Google Fonts) --->
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+        <!--- Bootstrap 4 --->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!--- Static Files --->
+        <link rel="icon" href="{% static "img/favicon.ico" %}">
+        <link rel="stylesheet" href="{% static "style.css" %}">
+
+        <title>{% block title %}Base{% endblock %}</title>
+    </head>
+    <body class="bg-light">
+        <nav class="navbar navbar-expand-sm navbar-dark flex-column flex-sm-row" style="background-color: rgb(35, 35, 35);">
+            <a class="navbar-brand" href="{% url "main:home" %}">
+                <img src="{% static "img/linkLight.png" %}" alt="link">
+                shlink
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item navbar-left {% block navhome %}{% endblock %}">
+                    <a class="nav-link" href="{% url "main:home" %}">Home</a>
+                </li>
+                <li class="nav-item navbar-left {% block navcreate %}{% endblock %}">
+                    <a class="nav-link" href="{% url "main:create" %}">Create Link</a>
+                </li>
+            </ul>
+        </nav>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

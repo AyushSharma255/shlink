@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}shlink - Home{% endblock %}
+    </head>
+    <body>
+        {% block navhome %}active{% endblock %}
+
+        {% block body %}
+            <div class="jumbotron fluid-jumbotron" style="height: 100vh; width: 100vw; background-color: rgb(30, 30, 30);">
+                <h1 class="display-1 text-center text-light">shlink</h1>
+                <p class="lead text-center text-light">
+                    The solution all your URL shrinking needs.
+                    <br>
+                    List of links made <a href="{% url "main:list" %}">here</a>.
+                </p>
+            </div>
+        {% endblock %}
+    </body>
+</html>

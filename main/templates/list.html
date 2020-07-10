@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}shlink - URL List{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <div class="jumbotron bg-light" style="overflow: scroll; height: 100vh; width: 100vw;">
+                <label for="searchbar">Search</label>
+                <input type="text" name="searchbar" class="form-control">
+                <br>
+                {% for url in urlList %}
+                    <div class="card d-block p-5">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ url.name }}</h5>
+                            <p class="card-text"><a href="{% url "main:url" name=url.name %}">{{ url.url }}</a></p>
+                        </div>
+                    </div>
+                {% endfor %}
+                <script>
+                    let searchBar = document.querySelector("input")
+                    let entries = document.querySelectorAll("div.card")
+
+                    searchBar.addEventListener("input", () => {
+                        entries.forEach((card) => {
+                            let header = card.querySelector("div.card-body h5.card-title")
+                            console.log(header.textContent, searchBar.value)
+                            if (header.textContent.includes(searchBar.value)) {
+                                card.classList.add("d-block")
+                                card.style.display = "inline"
+                            } else {
+                                card.classList.remove("d-block")
+                                card.style.display = "none"
+                            }
+                        })
+                    })
+                </script>
+            </div>
+        {% endblock %}
+    </body>
+</html>

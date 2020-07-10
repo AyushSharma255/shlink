@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}shlink - Create{% endblock %}
+    </head>
+    <body>
+        {% block navcreate %}active{% endblock %}
+
+        {% block body %}
+            <div class="jumbotron fluid-jumbotron bg-light text-black" style="height: 100vh; width: 100vw;">
+                <form action="{% url "main:create" %}" method="POST">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="{{ form.url.id_for_label }}">Link</label>
+                        {{ form.url }}
+                        <span class="text-danger form-text">{{ form.url.errors.0 }}</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.name.id_for_label }}">Shortened Name</label>
+                        {{ form.name }}
+                        <span class="text-danger form-text">{{ form.name.errors.0 }}</span>
+                    </div>
+
+                    <input class="btn btn-outline-dark btn-md"  type="submit">
+                </form>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success" style="margin-top: 2.5%;">
+                            <h4 class="alert-heading">You have made the shortened <a class="alert-link" href="{% url "main:url" name=form.name.value %}">URL</a>!</h4>
+                            <button type="button" class="close" aria-label="Close" onclick="document.querySelector('div.alert.alert-success').remove()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <p>You and your friends may use it, to get to the original URL.</p>
+                            <hr>
+                            <p class="mb-0">
+                                Your shortened <a class="alert-link" href="{% url "main:url" name=form.name.value %}">URL</a>
+                                is linked to <a class="alert-link" href="{{ form.url.value }}">{{ form.url.value }}</a>.
+                            </p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endblock %}
+    </body>
+</html>

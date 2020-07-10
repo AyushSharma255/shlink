@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}shlink - Redirecting to {{ url.url }}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <div class="jumbotron fluid-jumbotron bg-light">
+                <div class="loader"></div>
+                <p></p><p></p>
+                <br>
+                <br>
+                <h1 class="display-3 mx-auto text-center"> Redirecting to {{ url.url }}</h1>
+                <p class="display-4 lead mx-auto text-center">in 5 seconds</p>
+            </div>
+            <script>
+                let numOfSeconds = 5
+
+                setInterval(() => {
+                    numOfSeconds--
+
+                    document.querySelector("p.display-4.lead.mx-auto.text-center").textContent = `in ${numOfSeconds} seconds`
+                }, 1000)
+
+                setTimeout(() => {
+                    location.replace("{{ url.url }}")
+                }, 5000)
+            </script>
+        {% endblock %}
+    </body>
+</html>
