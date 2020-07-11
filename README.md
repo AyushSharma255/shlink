@@ -7,7 +7,7 @@
 ***Install Python (if you didn't), and Django 3***
 1. Download Python 3.x: https://www.python.org/downloads/
 2. Install Django
-> pip install django
+> pip3 install django==3.0.5
 3. Run the web application
 > python3 manage.py runserver 
 4. Go to the URL address in the console (http://127.0.0.1:8000/)
