@@ -15,19 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls.static import static as serveDirectory
+from django.conf.urls.static import static
 from django.conf import settings
 from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("main.urls", namespace="main"))
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-if not settings.DEBUG: # When in production
-    handler404 = views.handler404
-    handler505 = views.handler500
 
-    # Static
-    urlpatterns += serveDirectory(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# Set DEBUG = False for Error pages
 
+handler404 = views.handler404
+handler505 = views.handler500
+
+   
