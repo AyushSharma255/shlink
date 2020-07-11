@@ -2,6 +2,10 @@
 db.sqlite3
 __pycache__
 
+# Ignore Admin Assets
+
+static/admin
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
