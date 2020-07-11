@@ -24,10 +24,10 @@ urlpatterns = [
     path("", include("main.urls", namespace="main"))
 ]
 
-if not settings.DEBUG:
+if not settings.DEBUG: # When in production
     handler404 = views.handler404
     handler505 = views.handler500
 
     # Static
-    urlpatterns + serveDirectory(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += serveDirectory(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
