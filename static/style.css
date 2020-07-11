@@ -1,0 +1,42 @@
+body, html {
+    font-family: "Quicksand", sans-serif;
+    height: 100%;
+    overflow: hidden;
+}
+
+*::selection {
+    background: rgba(109, 186, 255, 0.58);
+    color: rgb(255, 255, 255) !important;
+}
+
+a.nav-link {
+    color: rgb(153, 156, 155) !important;
+    transition: color 0.75s !important;
+}
+
+a.nav-link:hover {
+    color: rgb(255, 255, 255) !important;
+}
+
+li.active a {
+    color: rgb(255, 255, 255) !important;
+}
+
+.jumbotron {
+    border-radius: 0 !important;
+}
+
+.loader {
+    margin: auto;
+    border: 16px solid rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    border-top: 16px solid rgb(35, 35, 35);
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
