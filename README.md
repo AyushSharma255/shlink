@@ -2,7 +2,7 @@
 #### URL Shortener, made in Django 3.0.5 (Python 3.x) and Bootstrap 4.
 
 
-## Running Locally
+### Running Locally
 
 ***Install Python (if you didn't), and Django 3***
 1. Download Python 3.x: https://www.python.org/downloads/
