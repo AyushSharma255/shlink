@@ -9,11 +9,11 @@
 2. Install Django
 > pip install django
 3. Run the web application
-> python manage.py runserver 
+> python3 manage.py runserver 
 4. Go to the URL address in the console (http://127.0.0.1:8000/)
 
 ***You may need to make migrations***
 1. Make migration files
-> python manage.py makemigrations
+> python3 manage.py makemigrations
 2. Apply migration files, so the models actually work
-> python manage.py migrate
+> python3 manage.py migrate
