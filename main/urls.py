@@ -7,6 +7,6 @@ urlpatterns = [
     path("", views.HomeView.as_view(), name="home"),
     path("create/", views.URLCreateView, name="create"),
     path("url/<name>/", views.URLDetailView, name="url"),
-    path("list/", views.URLListView.as_view(), name="list")
+    path("list/<page>", views.URLListView.as_view(), name="list")
 ]
 
