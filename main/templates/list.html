@@ -9,12 +9,12 @@
     </head>
     <body>
         {% block body %}
-            <div class="jumbotron bg-light" style="overflow: scroll; height: 100vh; width: 100vw;">
+            <div class="jumbotron bg-light" style="overflow: none; height: 100vh; width: 100vw;">
                 <label for="searchbar">Search</label>
                 <input type="text" name="searchbar" class="form-control">
                 <br>
                 {% for url in urlList %}
-                    <div class="card d-block p-5">
+                    <div class="card d-block p-2">
                         <div class="card-body">
                             <h5 class="card-title">{{ url.name }}</h5>
                             <p class="card-text"><a href="{% url "main:url" name=url.name %}">{{ url.url }}</a></p>
@@ -39,6 +39,16 @@
                         })
                     })
                 </script>
+                <br><br><br>
+                <ul class="pagination justify-content-center">
+                    {% if page|add:0 != 1 %}
+                        <li class="page-item"><a class="page-link" href="{% url "main:list" page=page|add:-1 %}">&laquo;</a></li>
+                    {% endif %}
+                    <li class="page-item active"><a class="page-link" href="{% url "main:list" page=page %}">{{ page }}</a></li>
+                    {% if amount|add:0 == 5 %}
+                        <li class="page-item"><a class="page-link" href="{% url "main:list" page=page|add:1 %}">&raquo;</a></li>
+                    {% endif %}
+                </ul>
             </div>
         {% endblock %}
     </body>
