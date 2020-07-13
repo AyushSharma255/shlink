@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 from django.views import generic
 from django.template.defaultfilters import slugify
@@ -16,6 +17,21 @@ class URLListView(generic.ListView):
     model = models.ShortenedURL
     template_name = "list.html"
     context_object_name = "urlList"
+
+    def get_context_data(self, **kwargs):
+        if int(self.kwargs["page"]) <= 0:
+            raise Http404()
+
+        context = super().get_context_data(**kwargs)
+        urlList = models.ShortenedURL.objects.order_by()[(int(self.kwargs["page"]) * 5 - 5):(int(self.kwargs["page"]) * 5)]
+        context[self.context_object_name] = urlList
+        context["amount"] = len(urlList)
+
+        if len(urlList) == 0:
+            raise Http404()
+
+        context["page"] = self.kwargs["page"]
+        return context
 
 
 def URLCreateView(request):
