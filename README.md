@@ -1,5 +1,6 @@
 # shlink
 #### URL Shortener, made in Django 3.0.5 (Python 3.x) and Bootstrap 4.
+The project is at https://shlink-project-asharma.herokuapp.com/.
 
 
 ### Running Locally
