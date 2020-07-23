@@ -1,1 +1,1 @@
-web: shlink.wsgi
+web: gunicorn shlink.wsgi
