@@ -24,7 +24,7 @@ SECRET_KEY = '!wx)$v4_@@l!f269c_$2q5=&!lv4ky4b!b@0-132lp#-f_ncqo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True # Only setting it to True since no serving
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1", " https://shlink-project-asharma.herokuapp.com/"]
 
 # Application definition
 
